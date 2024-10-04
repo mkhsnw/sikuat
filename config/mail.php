@@ -13,6 +13,7 @@ return [
     | "mailers" array. Examples of each type of mailer are provided.
     |
     */
+    'log_channel' => env('MAIL_LOG_CHANNEL', 'stack'),
 
     'default' => env('MAIL_MAILER', 'log'),
 
@@ -33,8 +34,16 @@ return [
     |            "postmark", "resend", "log", "array",
     |            "failover", "roundrobin"
     |
+    
     */
-
+'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer'       => false,
+            'verify_peer_name'  => false,
+        ],
+    ],
+    
     'mailers' => [
 
         'smtp' => [
