@@ -16,6 +16,7 @@
     <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
+    {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
 </head>
 <body class="">
     <header class="header top-0 shadow-md flex items-center justify-between px-8 py-02 bg-test">
