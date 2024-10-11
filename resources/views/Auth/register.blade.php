@@ -1,56 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
-    <h2>Register</h2>
+<x-header>
 
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+</x-header>
 
-    <form action="{{ route('register') }}" method="POST">
+
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<div class="shadow-xl p-10 bg-white max-w-xl rounded mt-8 mx-auto mb-8">
+<form action="{{ route('register') }}" method="POST">
+    <h2 class="text-3xl mb-4 font-bold text-center">Register</h2>
         @csrf
-        <div>
-            <label for="username">Username</label>
-            <input type="text" name="username" value="{{ old('username') }}" required>
+        <div class="mb-4 relative">
+            <x-bladewind::input type="text" class="mt-2" name="username" label="Username" required="true"></x-bladewind::input>
         </div>
 
         <div>
-            <label for="nama_user">Nama User</label>
-            <input type="text" name="nama_user" value="{{ old('nama_user') }}" required>
+            <x-bladewind::input type="text" class="mt-2" name="username" label="Nama Lengkap" required="true"></x-bladewind::input>
         </div>
 
         <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" value="{{ old('email') }}" required>
+            <x-bladewind::input type="email" class="mt-2" name="username" label="Email" required="true"></x-bladewind::input>
         </div>
 
         <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" required>
+            <x-bladewind::input type="password"  class="mt-2" name="password" label="Password"  required="true"></x-bladewind::input>
         </div>
 
         <div>
-            <label for="password_confirmation">Confirm Password</label>
-            <input type="password" name="password_confirmation" required>
+            <x-bladewind::datepicker label="tanggal lahir"/>
         </div>
 
-        <div>
-            <label for="tanggal_lahir">Tanggal Lahir</label>
-            <input type="date" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required>
-        </div>
-
-        <button type="submit">Register</button>
+        <button type="submit" class="py-1 px-3 bg-gray-300 mt-3 hover:bg-accent duration-200 ease-in-out rounded">Register</button>
     </form>
-</body>
-</html>
+</div>
+
+
+<x-footer></x-footer>

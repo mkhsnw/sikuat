@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "bladewind" : "php artisan vendor:publish --tag=bladewind-public --force"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
