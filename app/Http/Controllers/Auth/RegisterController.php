@@ -33,6 +33,6 @@ class RegisterController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
         ]);
         //dd($user);
-        // return redirect()->route('login')->with('success', 'Registration successful!');
+         return redirect()->route('login')->with('success', 'Registration successful!');
     }
 }

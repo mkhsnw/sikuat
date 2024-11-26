@@ -1,6 +1,5 @@
 <div class="my-4">
 	<div class="container grid grid-cols-12 mx-auto dark:bg-gray-50">
-		<div class="bg-no-repeat bg-cover dark:bg-gray-300 col-span-full lg:col-span-4" style="background-image: url('https://source.unsplash.com/random/640x480'); background-position: center center; background-blend-mode: multiply; background-size: cover;"></div>
 		<div class="flex flex-col p-6 col-span-full row-span-full lg:col-span-8 lg:p-10">
 			<div class="flex justify-start">
 				<span class="px-2 py-1 my-2 text-xs rounded-full bg-accent text-gray-50">Label</span>

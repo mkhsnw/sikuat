@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ThreadController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/home', function () {
+//     return view('emails.dashboard')->name('home');
+// });
 
 Route::get('/article', function() {
     return view('article');
@@ -27,6 +28,8 @@ Route::get('input-token', [LoginController::class, 'showTokenForm'])->name('toke
 Route::post('verify-token', [LoginController::class, 'verifyToken'])->name('token.verify');
 
 // Route untuk halaman home (setelah login)
-Route::get('/dashboard', function () {return view('auth.dashboard');})->middleware('auth')->name('dashboard');
+Route::get('/', function () {return view('dashboard');})->middleware('auth')->name('dashboard');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/thread', [ThreadController::class, 'index']);
 

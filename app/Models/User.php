@@ -18,7 +18,7 @@ class User extends Authenticatable
         'email',
         'password',
         'tanggal_lahir',
-        'token', // Tambahkan jika kamu menyimpan token di sini
+        'token', 
         'foto',
     ];
 
@@ -30,4 +30,9 @@ class User extends Authenticatable
     protected $casts = [
         'tanggal_lahir' => 'date',
     ];
+
+    public function threads()
+    {
+        return $this->hasMany(Thread::class, 'id_user');
+    }
 }
