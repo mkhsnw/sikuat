@@ -63,7 +63,7 @@
 
     </div>
   
-    <!-- Right Sidebar (Suggested Accounts) -->
+    {{-- <!-- Right Sidebar (Suggested Accounts) -->
     <div class="w-80 bg-white p-6 rounded-lg shadow-md border border-gray-200">
       <h2 class="text-xl font-semibold mb-6 text-gray-900">Suggested Accounts</h2>
       <div class="space-y-6">
@@ -86,7 +86,26 @@
           <button class="ml-auto text-sm text-blue-500 font-semibold hover:underline">Follow</button>
         </div>
       </div>
-    </div>
+    </div> --}}
+
+    <!-- Right Sidebar (Suggested Accounts) -->
+<div class="w-80 bg-white p-6 rounded-lg shadow-md border border-gray-200">
+  <h2 class="text-xl font-semibold mb-6 text-gray-900">Suggested Accounts</h2>
+  <div class="space-y-6">
+      @foreach($users as $user)
+      <!-- Account -->
+      <div class="flex items-center space-x-4 mb-4">
+          <img src="default-profile.jpg" alt="Profile Image" class="w-10 h-10 rounded-full border border-gray-300">
+          <div>
+              <div class="font-semibold text-gray-900">{{ $user->nama_user }}</div>
+              <div class="text-gray-500">@ {{ $user->username }}</div>
+          </div>
+          <button class="ml-auto text-sm text-blue-500 font-semibold hover:underline">Follow</button>
+      </div>
+      @endforeach
+  </div>
+</div>
+
   </div>
   
 <x-footer></x-footer>

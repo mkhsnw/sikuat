@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "811b5f455161f92a9f59d8c0df344e0a",
+    "content-hash": "fe08b75eb93d16da8db4ca0626749d89",
     "packages": [
         {
             "name": "brick/math",
@@ -1821,16 +1821,16 @@
         },
         {
             "name": "mkocansey/bladewind",
-            "version": "v2.6.10",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mkocansey/bladewind.git",
-                "reference": "24d14e4ecc38264c406dbda870d8eb7e02e8ef20"
+                "reference": "b6b7772ced615461d7a744581f322f55cee4e2e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mkocansey/bladewind/zipball/24d14e4ecc38264c406dbda870d8eb7e02e8ef20",
-                "reference": "24d14e4ecc38264c406dbda870d8eb7e02e8ef20",
+                "url": "https://api.github.com/repos/mkocansey/bladewind/zipball/b6b7772ced615461d7a744581f322f55cee4e2e1",
+                "reference": "b6b7772ced615461d7a744581f322f55cee4e2e1",
                 "shasum": ""
             },
             "require": {
@@ -1868,9 +1868,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mkocansey/bladewind/issues",
-                "source": "https://github.com/mkocansey/bladewind/tree/v2.6.10"
+                "source": "https://github.com/mkocansey/bladewind/tree/v2.7.0"
             },
-            "time": "2024-09-16T12:41:50+00:00"
+            "time": "2024-09-28T20:31:47+00:00"
         },
         {
             "name": "monolog/monolog",
