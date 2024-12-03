@@ -9,9 +9,7 @@
     @vite('resources/css/app.css')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
     <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
@@ -30,13 +28,13 @@
         <nav class="nav font-semibold text-lg ">
             <ul class="flex items-center">
                 <li class="p-4 border-b-2 border-accent border-opacity-0 hover:border-opacity-100 hover:text-accent duration-200 cursor-pointer active">
-                  <a href="">Article</a>
+                  <a href="/article">Article</a>
                 </li>
                 <li class="p-4 border-b-2 border-accent border-opacity-0 hover:border-opacity-100 hover:text-accent duration-200 cursor-pointer">
-                  <a href="">Challange</a>
+                  <a href="/">Challange</a>
                 </li>
                 <li class="p-4 border-b-2 border-accent border-opacity-0 hover:border-opacity-100 hover:text-accent duration-200 cursor-pointer">
-                  <a href="">Thread</a>
+                  <a href="/thread">Thread</a>
                 </li>
             </ul>
         </nav>
