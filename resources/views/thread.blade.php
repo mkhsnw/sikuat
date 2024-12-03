@@ -1,6 +1,7 @@
 <x-header></x-header>
 <div class="bg-brand-background min-h-screen font-sans">
   <div class="container mx-auto px-4 py-8 lg:max-w-6xl">
+    
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <!-- Left Sidebar: Recommended Articles -->
           <div class="lg:col-span-1 space-y-6">
@@ -24,9 +25,34 @@
           <!-- Main Thread -->
           <div class="lg:col-span-2 space-y-6">
               <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                
                   <div class="p-6 border-b">
                       <h1 class="text-3xl font-bold text-gray-900">Thread Discussion</h1>
                   </div>
+
+                  <section class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Create a New Thread</h2>
+                    <form action="/threads/store" method="POST" class="flex flex-col lg:flex-row items-start lg:items-center gap-4">
+                        <!-- Input Caption -->
+                        <div class="flex-1 w-full">
+                            <x-bladewind::textarea label="Caption" rows="5" required="true"/>
+                        </div>
+                
+                        <!-- Submit Button -->
+                        <div class="flex-shrink-0">
+                            <x-bladewind::button onclick="showModal('no-cancel')">
+    Post
+</x-bladewind::button>
+
+<x-bladewind::modal
+    title="Success"
+    name="no-cancel"
+    cancel_button_label="">
+    you just posted a new thread
+</x-bladewind::modal>
+                        </div>
+                    </form>
+                </section>
                   
                   <!-- Thread Post 1 -->
                   <div class="p-6 border-b hover:bg-gray-50 transition-colors">
