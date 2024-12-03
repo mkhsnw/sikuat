@@ -1,94 +1,143 @@
 <x-header></x-header>
-<main class="mx-auto pt-16 max-h-screen overflow-auto">
-    <div class="px-6 py-8">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-3xl p-8 mb-5">
-                <h1 class="text-3xl font-bold mb-10">John Doe</h1>
-                <hr class="my-10">
-                <div class="grid grid-cols-2 gap-x-20">
-                    <div>
-                        <h2 class="text-2xl font-bold mb-4">Stats</h2>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="col-span-2">
-                                <div class="p-4 bg-secondary rounded-xl">
-                                    <div class="font-bold text-xl text-tertiary leading-none">Good day, <br>Kristin
-                                    </div>
-                                    <div class="mt-5">
-                                        <button type="button"
-                                            class="inline-flex items-center justify-center py-2 px-3 rounded-xl bg-white text-gray-800 hover:text-green-500 text-sm font-semibold transition">
-                                            Start tracking
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-4 bg-yellow-100 rounded-xl text-gray-800">
-                                <div class="font-bold text-2xl leading-none">20</div>
-                                <div class="mt-2">Tasks finished</div>
-                            </div>
-                            <div class="p-4 bg-yellow-100 rounded-xl text-gray-800">
-                                <div class="font-bold text-2xl leading-none">5,5</div>
-                                <div class="mt-2">Tracked hours</div>
-                            </div>
-                            <div class="col-span-2">
-                                <div class="p-4 bg-additional rounded-xl text-tertiary">
-                                    <div class="font-bold text-xl leading-none">Your daily plan</div>
-                                    <div class="mt-2">5 of 8 completed</div>
-                                </div>
-                            </div>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Profile Section -->
+            <div class="lg:col-span-1 bg-white rounded-2xl shadow-xl p-6">
+                <div class="text-center">
+                    <img 
+                        src="/api/placeholder/200/200" 
+                        alt="Profile" 
+                        class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
+                    >
+                    <h2 class="text-2xl font-bold text-gray-800">John Doe</h2>
+                    <p class="text-gray-500 mt-2">Software Developer</p>
+                    
+                    <div class="mt-6 grid grid-cols-3 gap-4">
+                        <div>
+                            <span class="block text-2xl font-bold text-blue-600">24</span>
+                            <span class="text-sm text-gray-500">Challenges</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-green-600">15</span>
+                            <span class="text-sm text-gray-500">Completed</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold text-yellow-600">9</span>
+                            <span class="text-sm text-gray-500">Pending</span>
                         </div>
                     </div>
-                    <div>
-                        <h2 class="text-2xl font-bold mb-4">Your tasks today</h2>
 
-                        <div class="space-y-4">
-                            <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                                <div class="flex justify-between">
-                                    <div class="text-gray-400 text-xs">Number 10</div>
-                                    <div class="text-gray-400 text-xs">4h</div>
-                                </div>
-                                <a href="javascript:void(0)"
-                                    class="font-bold hover:text-yellow-800 hover:underline">Blog and social posts</a>
-                                <div class="text-sm text-gray-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                        fill="currentColor" class="text-gray-800 inline align-middle mr-1"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                    </svg>Deadline is today
-                                </div>
-                            </div>
-                            <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                                <div class="flex justify-between">
-                                    <div class="text-gray-400 text-xs">Grace Aroma</div>
-                                    <div class="text-gray-400 text-xs">7d</div>
-                                </div>
-                                <a href="javascript:void(0)" class="font-bold hover:text-yellow-800 hover:underline">New
-                                    campaign review</a>
-                                <div class="text-sm text-gray-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                        fill="currentColor" class="text-gray-800 inline align-middle mr-1"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                    </svg>New feedback
-                                </div>
-                            </div>
-                            <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                                <div class="flex justify-between">
-                                    <div class="text-gray-400 text-xs">Petz App</div>
-                                    <div class="text-gray-400 text-xs">2h</div>
-                                </div>
-                                <a href="javascript:void(0)"
-                                    class="font-bold hover:text-yellow-800 hover:underline">Cross-platform and browser
-                                    QA</a>
-                            </div>
+                    <button class="mt-6 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
 
+            <!-- Today's Challenges -->
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-xl p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Today's Challenges</h2>
+                    <span class="text-sm text-gray-500">5 of 8 completed</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-xl flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold text-gray-800">Blog and Social Posts</h3>
+                            <p class="text-sm text-gray-500">Number 10 • 4 hours</p>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="mr-2 text-sm text-gray-600">Deadline Today</span>
+                            <span class="text-red-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3a1 1 0 001 1h2a1 1 0 100-2h-1V7z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
                         </div>
                     </div>
+
+                    <div class="bg-blue-50 p-4 rounded-xl flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold text-gray-800">New Campaign Review</h3>
+                            <p class="text-sm text-gray-500">Grace Aroma • 7 days</p>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="mr-2 text-sm text-gray-600">New Feedback</span>
+                            <span class="text-yellow-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- More challenges... -->
+                </div>
+            </div>
+
+            <!-- Challenge History -->
+            <div class="lg:col-span-3 bg-white rounded-2xl shadow-xl p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Challenge History</h2>
+                    <select class="form-select border rounded-lg px-2 py-1 text-sm">
+                        <option>Last 30 Days</option>
+                        <option>Last 90 Days</option>
+                        <option>This Year</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-green-50 p-4 rounded-xl">
+                        <h3 class="font-bold text-green-800">Completed</h3>
+                        <p class="text-3xl font-bold text-green-600 mt-2">15</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-xl">
+                        <h3 class="font-bold text-yellow-800">In Progress</h3>
+                        <p class="text-3xl font-bold text-yellow-600 mt-2">9</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-xl">
+                        <h3 class="font-bold text-red-800">Overdue</h3>
+                        <p class="text-3xl font-bold text-red-600 mt-2">2</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-xl">
+                        <h3 class="font-bold text-blue-800">Total Challenges</h3>
+                        <p class="text-3xl font-bold text-blue-600 mt-2">24</p>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <canvas id="challengeChart"></canvas>
                 </div>
             </div>
         </div>
     </div>
-</main>
+
+    <script>
+        // Challenge History Chart
+        const ctx = document.getElementById('challengeChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Challenges Completed',
+                    data: [5, 8, 6, 7],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
 
 <x-footer></x-footer>
