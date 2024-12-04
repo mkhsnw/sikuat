@@ -28,7 +28,7 @@
                         </div>
                     </div>
 
-                    <button class="mt-6 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    <button class="mt-6 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" onclick="window.location.href='{{route('edit')}}'">
                         Edit Profile
                     </button>
                 </div>
@@ -57,87 +57,81 @@
                         </div>
                     </div>
 
-                    <div class="bg-blue-50 p-4 rounded-xl flex items-center justify-between">
-                        <div>
-                            <h3 class="font-bold text-gray-800">New Campaign Review</h3>
-                            <p class="text-sm text-gray-500">Grace Aroma • 7 days</p>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="mr-2 text-sm text-gray-600">New Feedback</span>
-                            <span class="text-yellow-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- More challenges... -->
-                </div>
-            </div>
-
-            <!-- Challenge History -->
-            <div class="lg:col-span-3 bg-white rounded-2xl shadow-xl p-6">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">Challenge History</h2>
-                    <select class="form-select border rounded-lg px-2 py-1 text-sm">
-                        <option>Last 30 Days</option>
-                        <option>Last 90 Days</option>
-                        <option>This Year</option>
-                    </select>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-green-50 p-4 rounded-xl">
-                        <h3 class="font-bold text-green-800">Completed</h3>
-                        <p class="text-3xl font-bold text-green-600 mt-2">15</p>
-                    </div>
-                    <div class="bg-yellow-50 p-4 rounded-xl">
-                        <h3 class="font-bold text-yellow-800">In Progress</h3>
-                        <p class="text-3xl font-bold text-yellow-600 mt-2">9</p>
-                    </div>
-                    <div class="bg-red-50 p-4 rounded-xl">
-                        <h3 class="font-bold text-red-800">Overdue</h3>
-                        <p class="text-3xl font-bold text-red-600 mt-2">2</p>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-xl">
-                        <h3 class="font-bold text-blue-800">Total Challenges</h3>
-                        <p class="text-3xl font-bold text-blue-600 mt-2">24</p>
-                    </div>
-                </div>
-
-                <div class="mt-6">
-                    <canvas id="challengeChart"></canvas>
+                    
+                    
+                    <!-- Add more challenges here -->
                 </div>
             </div>
         </div>
+
+        <!-- My Threads Section -->
+        <div class="mt-10 bg-white rounded-2xl shadow-xl p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">My Threads</h2>
+                <div class="flex items-center space-x-2">
+                    <select class="form-select border rounded-lg px-2 py-1 text-sm">
+                        <option>All Status</option>
+                        <option>Active</option>
+                        <option>Closed</option>
+                    </select>
+                    <button class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700 transition">
+                        New Thread
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-green-50 p-4 rounded-xl">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-green-800">Python Enthusiasts</h3>
+                        <span class="text-green-600 text-sm">Active</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">Discussions about advanced Python techniques</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500">12 Members</span>
+                        <button class="text-blue-600 hover:text-blue-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Add more threads here -->
+            </div>
+        </div>
+
+        <!-- My Articles Section -->
+        <div class="mt-10 bg-white rounded-2xl shadow-xl p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">My Articles</h2>
+                <div class="flex items-center space-x-2">
+                    <select class="form-select border rounded-lg px-2 py-1 text-sm">
+                        <option>All Status</option>
+                        <option>Published</option>
+                        <option>Draft</option>
+                    </select>
+                    <button class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700 transition">
+                        New Article
+                    </button>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-xl flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-gray-800">Mastering Python Basics</h3>
+                        <p class="text-sm text-gray-500">Published • 2 weeks ago</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-green-600 text-sm">245 Views</span>
+                        <button class="text-blue-600 hover:text-blue-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.379-8.379-2.828-2.828z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Add more articles here -->
+            </div>
+        </div>
     </div>
-
-    <script>
-        // Challenge History Chart
-        const ctx = document.getElementById('challengeChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-                datasets: [{
-                    label: 'Challenges Completed',
-                    data: [5, 8, 6, 7],
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
 </body>
-
 <x-footer></x-footer>

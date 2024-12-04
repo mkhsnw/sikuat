@@ -33,3 +33,19 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/thread', [ThreadController::class, 'index']);
 
+Route::get('/thread/create',function(){
+    return view('add_thread');
+});
+
+Route::get('/article/create',function(){
+    return view('add_article');
+});
+
+Route::get('/edit',function(){
+    return view('edit_profile');
+})->name('edit');
+
+Route::get('/admin/dashboard',function(){
+    return view('admin_detail_artikel');
+})->name('admin');
+

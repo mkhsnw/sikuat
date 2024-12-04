@@ -1,6 +1,5 @@
-<div class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-	<div class="max-w-4xl w-full">
-			<article class="bg-white shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl group grid md:grid-cols-2">
+
+			<article class="bg-white shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl group grid md:grid-cols-2 my-8">
 					<!-- Article Image -->
 					<div class="relative md:h-full">
 							<img 
@@ -48,5 +47,3 @@
 							</div>
 					</div>
 			</article>
-	</div>
-</div>
