@@ -45,3 +45,7 @@ Route::get('/edit',function(){
     return view('edit_profile');
 })->name('edit');
 
+Route::get('/admin/dashboard',function(){
+    return view('admin_detail_artikel');
+})->name('admin');
+
