@@ -36,7 +36,7 @@
 
       <!-- Charts -->
       <div class="grid grid-cols-2 gap-6">
-        <div class="bg-white shadow p-6 rounded-lg flex justify-betwee">
+        <div class="bg-white shadow p-6 rounded-lg">
         <x-bladewind::card title="User`s Age Ratio">
 
           <x-bladewind::horizontal-line-graph
