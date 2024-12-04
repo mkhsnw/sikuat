@@ -46,6 +46,18 @@ Route::get('/edit',function(){
 })->name('edit');
 
 Route::get('/admin/dashboard',function(){
-    return view('admin_detail_artikel');
+    return view('admin');
 })->name('admin');
+
+Route::get('/admin/article',function(){
+    return view('admin_article');
+})->name('admin_article');
+
+Route::get('/admin/detail_article',function(){
+    return view('admin_detail_artikel');
+})->name('admin_detail_article');
+
+Route::get('/admin/challange',function(){
+    return view('admin_challange');
+})->name('admin_challange');
 
