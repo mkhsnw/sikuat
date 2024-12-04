@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Thread;
 
 class ThreadController extends Controller
 {
@@ -16,15 +17,28 @@ class ThreadController extends Controller
     {
         // $users = DB::table('user')->get();
         $users = User::all();
-        return view('thread', compact('users'));
+        $thread = Thread::all();
+        return view('thread', compact('users', 'thread'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'caption' => 'string|max:255',
+            'thumbnail' => 'string|max:255',
+        
+        ]);
+
+        $thread = Thread::create([
+            'caption' => $request->caption,
+            'thumbnail' => $request->thumbnail,
+          
+        ]);
+        //dd($thread);
+         return redirect()->route('dashboard')->with('success', 'Create Thread successful!');
     }
 
     /**
