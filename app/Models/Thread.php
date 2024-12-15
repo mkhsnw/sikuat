@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Thread extends Model
 {
     use HasFactory;
-    protected $table = 'threads';
+    protected $table = 'thread';
     protected $fillable = [
         'id_user',
         'caption',
-        'isi',
         'like',
         'created_at',
         'updated_at',

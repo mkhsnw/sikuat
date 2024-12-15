@@ -16,8 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade');
             $table->string('caption');
-            $table->text('isi');
-            $table->integer('like');
+            $table->integer('like')->default(0);
             $table->timestamps();
         });
     }

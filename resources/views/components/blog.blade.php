@@ -1,4 +1,5 @@
 
+			
 			<article class="bg-white shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl group grid md:grid-cols-2 my-8">
 					<!-- Article Image -->
 					<div class="relative md:h-full">
@@ -14,7 +15,7 @@
 					<div class="p-6 md:p-8 flex flex-col justify-center">
 							<div class="flex items-center mb-4">
 									<span class="px-3 py-1 text-xs font-medium rounded-full bg-brand-accent text-white uppercase tracking-wider">
-											Technology
+										{{ $article->kategori->nama_kategori }}	
 									</span>
 							</div>
 
