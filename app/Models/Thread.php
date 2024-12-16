@@ -13,7 +13,6 @@ class Thread extends Model
         'id',
         'id_user',
         'caption',
-        'isi',
         'like',
         'created_at',
         'updated_at',

@@ -27,6 +27,8 @@ class LoginController extends Controller
 
         if ($user && Hash::check($request->password, $user->password)) {
             // Buat token 5 digit
+            session()->put('id_user', $user->id);
+
             $token = rand(10000, 99999);
 
             // Simpan token ke database

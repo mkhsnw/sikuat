@@ -3,35 +3,25 @@
   <div class="bg-white rounded-2xl shadow-lg p-8 max-w-4xl w-full">
     <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Edit Profile</h2>
     
-    <form action="/profile/update" method="POST" class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      @csrf <!-- Token keamanan -->
       <!-- Left Section: Form Inputs -->
       <div class="space-y-6">
         <!-- Username -->
         <div>
           <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
-          <x-bladewind::input placeholder="Enter your Username"></x-bladewind::input>
+          <x-bladewind::input name="username" placeholder="Enter your Username" value="{{ old('username', $users->username) }}"></x-bladewind::input>
         </div>
         
-        <!-- Full Name -->
+        <!-- Full Name (Nama User) -->
         <div>
-          <label for="fullname" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-          <x-bladewind::input placeholder="Enter your fullname"></x-bladewind::input>
+          <label for="nama_user" class="block text-sm font-medium text-gray-700 mb-1">Nama User</label>
+          <x-bladewind::input name="nama_user" placeholder="Enter your full name" value="{{ old('nama_user', $users->nama_user) }}"></x-bladewind::input>
         </div>
-
+    
         <!-- Submit Button -->
         <div>
-          <x-bladewind::button onclick="showModal('no-cancel')">
-            Save Changes
-        </x-bladewind::button>
-        
-
-        <x-bladewind::modal
-        title="User Updated"
-        name="no-cancel"
-        cancel_button_label="">
-        user data has been updated
-    </x-bladewind::modal>
-        
+          <x-bladewind::button onclick="showModal('no-cancel')">Save Changes</x-bladewind::button>
         </div>
       </div>
       
@@ -39,7 +29,7 @@
       <div class="flex flex-col items-center space-y-4">
         <div class="relative w-40 h-40">
           <img 
-            src="https://via.placeholder.com/150" 
+            src="{{ $users->foto ? asset($users->foto) : 'https://via.placeholder.com/150' }}" 
             alt="Profile Picture" 
             class="w-full h-full rounded-full object-cover shadow-lg"
           />
@@ -52,7 +42,7 @@
           <input 
             type="file" 
             id="profilePicture" 
-            name="profile_picture" 
+            name="foto" 
             class="hidden"
             accept="image/*"
           />
@@ -60,6 +50,7 @@
         <p class="text-sm text-gray-500 text-center">Upload a new profile picture</p>
       </div>
     </form>
+    
   </div>
 </div>
 

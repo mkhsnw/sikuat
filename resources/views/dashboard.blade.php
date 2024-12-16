@@ -10,7 +10,7 @@
                         alt="Profile" 
                         class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
                     >
-                    <h2 class="text-2xl font-bold text-gray-800">John Doe</h2>
+                    <h2 class="text-2xl font-bold text-gray-800">{{ $users->username }}</h2>
                     <p class="text-gray-500 mt-2">Software Developer</p>
                     
                     <div class="mt-6 grid grid-cols-3 gap-4">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
 
-                    <button class="mt-6 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" onclick="window.location.href='{{route('edit')}}'">
+                    <button class="mt-6 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" onclick="window.location.href='{{route('profile.edit')}}'">
                         Edit Profile
                     </button>
                 </div>
@@ -105,7 +105,7 @@
                         <option>Active</option>
                         <option>Closed</option>
                     </select>
-                    <button class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700 transition">
+                    <button class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700 transition" onclick="window.location.href='{{route('threads.create')}}'">
                         New Thread
                     </button>
                 </div>
@@ -221,7 +221,7 @@
                         <option>Published</option>
                         <option>Draft</option>
                     </select>
-                    <button class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700 transition">
+                    <button class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700 transition" onclick="window.location.href='{{route('articles.create')}}'">
                         New Article
                     </button>
                 </div>

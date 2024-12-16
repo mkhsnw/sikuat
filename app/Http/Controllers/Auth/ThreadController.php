@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -17,34 +18,21 @@ class ThreadController extends Controller
     {
         // $users = DB::table('user')->get();
         $users = User::all();
-        $thread = Thread::all();
-        return view('thread', compact('users', 'thread'));
+        return view('thread', compact('users'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
-        $request->validate([
-            'caption' => 'string|max:255',
-            'thumbnail' => 'string|max:255',
-        
-        ]);
-
-        $thread = Thread::create([
-            'caption' => $request->caption,
-            'thumbnail' => $request->thumbnail,
-          
-        ]);
-        //dd($thread);
-         return redirect()->route('dashboard')->with('success', 'Create Thread successful!');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
         //
     }

@@ -4,9 +4,10 @@
         <div class="bg-white rounded-2xl shadow-xl p-6">
             <h2 class="text-3xl font-bold text-gray-800 mb-6">Create New Thread</h2>
             
-            <form action="/threads/store" method="POST">
+            <form action="{{ route('threads.store') }}" method="POST">
+                @csrf
                 <!-- Thread Title -->
-                <div class="mb-6">
+                {{-- <div class="mb-6">
                     <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Thread Title</label>
                     <input 
                         type="text" 
@@ -16,22 +17,30 @@
                         placeholder="Enter thread title"
                         required
                     >
-                </div>
+                </div> --}}
 
                 <!-- Description -->
                 <div class="mb-6">
-                    <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-                    <textarea 
-                        id="description" 
-                        name="description" 
+                    <label for="captionlabel" class="block text-sm font-medium text-gray-700 mb-2">Caption</label>
+                    {{-- <textarea 
+                        id="caption" 
+                        name="caption" 
                         class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3" 
                         placeholder="Describe your thread"
                         rows="6"
                         required
-                    ></textarea>
+                    ></textarea> --}}
+                    <div class="flex-1 w-full">
+                        <x-bladewind::textarea label="Caption" rows="5" name="caption" required />
+                    </div>
                 </div>
 
-                <!-- Category -->
+            {{-- <!-- Thumbnail -->
+            <div class="mb-6">
+                <label for="thumbnail" class="block text-sm font-medium text-gray-700 mb-2">Foto</label>
+                <x-bladewind::filepicker name="thumbnail" placeholder="Upload File Bosku"/>
+            </div> --}}
+                {{-- <!-- Category -->
                 <div class="mb-6">
                     <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Category</label>
                     <select 
@@ -46,7 +55,7 @@
                         <option value="data-science">Data Science</option>
                         <option value="machine-learning">Machine Learning</option>
                     </select>
-                </div>
+                </div> --}}
 
                 <!-- Submit Button -->
                 <div class="text-right">
