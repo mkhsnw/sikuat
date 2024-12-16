@@ -12,6 +12,9 @@
         <div class="bg-white shadow-2xl rounded-2xl p-8 border border-gray-100">
     <form action="{{ route('login') }}" method="POST">
         <div class="text-center">
+            @if (session('error'))
+                <x-bladewind::alert type='error'>{{session('error')}}</x-bladewind::alert>
+            @endif
             <h2 class="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h2>
             <p class="text-gray-500">Login to your account</p>
         </div>

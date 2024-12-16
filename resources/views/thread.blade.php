@@ -35,9 +35,13 @@
                   <section class="bg-white rounded-2xl shadow-lg p-6 mb-8">
                     <h2 class="text-xl font-bold text-gray-800 mb-4">Create a New Thread</h2>
                     <form action="/threads/store" method="POST" class="flex flex-col lg:flex-row items-start lg:items-center gap-4">
+
+                        <div class="flex-1 w-full">
+                            <x-bladewind::filepicker></x-bladewind::filepicker>
+                        </div>
                         <!-- Input Caption -->
                         <div class="flex-1 w-full">
-                            <x-bladewind::textarea label="Caption" rows="5" required="true"/>
+                            <x-bladewind::input label="Caption" rows="5" required="true" class="border-l-0 border-r-0 border-t-0 "/>
                         </div>
                 
                         <!-- Submit Button -->
