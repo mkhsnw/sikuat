@@ -43,18 +43,12 @@
         <div class="w-3/12 flex justify-end">
             <x-bladewind::dropmenu>
             <x-slot:trigger>
-                <div class="flex space-x-2 items-center shadow px-4 rounded-md">
-                    <div class="grow">
+                <div class="flex space-x-2 items-center rounded-md mb-4">
                         <x-bladewind::avatar image="/assets/...png" />
-                    </div>
-                    <div>
-                        <x-bladewind::icon name="chevron-down"
-                            class="!h-4 !w-4" />
-                    </div>
                 </div>
             </x-slot:trigger>
             <x-bladewind::dropmenu-item>
-                Deactivate my account
+                Logout
             </x-bladewind::dropmenu-item>
         </x-bladewind::dropmenu>
         </div>
