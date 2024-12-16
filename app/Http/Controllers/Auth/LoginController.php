@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\SendTokenMail;
 
 class LoginController extends Controller
 {
@@ -63,8 +64,6 @@ class LoginController extends Controller
     if ($user) {
         // Login pengguna jika token sesuai
         Auth::login($user);
-
-        
 
         // Redirect ke dashboard
         return redirect()->route('dashboard');

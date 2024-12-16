@@ -7,6 +7,7 @@ use App\Models\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Thread;
 
 class ThreadController extends Controller
 {
@@ -15,39 +16,17 @@ class ThreadController extends Controller
      */
     public function index()
     {
-       
-        $threads = Thread::with('user')->latest()->get();
-        return view('thread', compact('threads'));
-    }    
-
-    public function showaddThread()
-    {
-        // $iduser = session('id_user');
-        // dd($iduser);
-        return view('add_thread');
+        // $users = DB::table('user')->get();
+        $users = User::all();
+        return view('thread', compact('users'));
     }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function store(Request $request)
+    public function create()
     {
-        $iduser = session('id_user'); // Pastikan session id_user diatur dengan benar
-
-        // Validasi data yang dikirimkan
-        $validated = $request->validate([
-            'caption' => 'required|string',
-        ]);
-
-        // Simpan thread ke database
-        Thread::create([
-            'id_user' => $iduser, // Pastikan user sudah login
-            'caption' => $validated['caption'],
-            'like' => 0, // Default value
-        ]);
-
-      
-        // Redirect setelah berhasil menyimpan
-        return redirect()->back()->with('success', 'Thread created successfully!');
+        //
     }
 
     /**

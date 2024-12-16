@@ -82,3 +82,11 @@ Route::get('/admin/challange',function(){
     return view('admin_challange');
 })->name('admin_challange');
 
+Route::get('/detail_thread' ,function(){
+    return view('detail_thread');
+});
+
+Route::get('/detail_article' ,function(){
+    return view('detail_article');
+});
+

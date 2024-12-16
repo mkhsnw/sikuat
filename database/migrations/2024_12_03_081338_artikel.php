@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('thread', function (Blueprint $table) {
+        Schema::create('artikel', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade');
-            $table->string('caption');
-            $table->integer('like')->default(0);
+            $table->string('judul');
+            $table->unsignedBigInteger('id_kategori_artikel');
+            $table->foreign('id_kategori_artikel')->references('id')->on('kategori_artikel')->onDelete('cascade');
+            $table->text('isi');
+            $table->integer('like');
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('thread');
+        Schema::dropIfExists('artikel');
     }
 };
