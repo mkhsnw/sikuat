@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ThreadController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminChallengeController;
 
 // Route::get('/home', function () {
 //     return view('emails.dashboard')->name('home');
@@ -66,21 +68,24 @@ Route::get('/edit',function(){
 Route::get('/profile/edit', [ProfileController::class, 'index'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/admin/dashboard',function(){
-    return view('admin');
-})->name('admin');
+Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
 
-Route::get('/admin/article',function(){
-    return view('admin_article');
-})->name('admin_article');
+Route::prefix('admin')->middleware('auth:admin')->group(function () {
+    // Dashboard Admin
+    Route::get('/', function () {
+        return view('admin.admin');
+    })->name('admin.dashboard');
 
-Route::get('/admin/detail_article',function(){
-    return view('admin_detail_artikel');
-})->name('admin_detail_article');
+    // Route untuk Fitur Challenge
+    Route::get('/challenge', [AdminChallengeController::class, 'index'])->name('admin.challenge.index');
+    Route::post('/challenge', [AdminChallengeController::class, 'store'])->name('admin.challenge.store');
+    Route::put('/challenge/{id}', [AdminChallengeController::class, 'update'])->name('admin.challenge.update');
+    Route::delete('/challenge/{id}', [AdminChallengeController::class, 'destroy'])->name('admin.challenge.destroy');
 
-Route::get('/admin/challange',function(){
-    return view('admin_challange');
-})->name('admin_challange');
+    // Logout Admin
+    Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+});
 
 Route::get('/detail_thread' ,function(){
     return view('detail_thread');

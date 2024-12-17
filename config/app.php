@@ -123,4 +123,15 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'hash' => [
+        'driver' => 'bcrypt', // Pastikan ini menggunakan bcrypt
+    ],
+
+    'passwords' => [
+        'users' => [
+            'driver' => 'bcrypt',  // Bisa diubah menjadi 'argon' jika menggunakan argon
+        ],
+    ],
+
+
 ];
