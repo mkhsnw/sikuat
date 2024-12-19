@@ -5,9 +5,10 @@
     <nav>
       <ul>
         <li class="px-6 py-3 hover:bg-gray-700"><a href="/admin/">Dashboard</a></li>
-        <li class="px-6 py-3 hover:bg-gray-700"><a href="/admin/challenge">Challenge</a></li>
-        <li class="px-6 py-3 hover:bg-gray-700"><a href="/admin/article">Article</a></li>
-        <li class="px-6 py-3 hover:bg-gray-700"><a href="/admin/detail_article">Review Article</a></li>
+        <li class="px-6 py-3 hover:bg-gray-700"><a href="/admin/challenge">Challenges</a></li>
+        <li class="px-6 py-3 hover:bg-gray-700"><a href="/admin/admin-thread">Threads</a></li>
+        <li class="px-6 py-3 hover:bg-gray-700"><a href="/admin/article">Articles</a></li>
+        <li class="px-6 py-3 hover:bg-gray-700"><a href="/admin/review-article">Review Article</a></li>
       </ul>
     </nav>
   </aside>

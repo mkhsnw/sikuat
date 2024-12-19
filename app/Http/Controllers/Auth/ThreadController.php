@@ -7,7 +7,6 @@ use App\Models\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Thread;
 
 class ThreadController extends Controller
 {
@@ -20,15 +19,6 @@ class ThreadController extends Controller
         $users = User::all();
         return view('thread', compact('users'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */

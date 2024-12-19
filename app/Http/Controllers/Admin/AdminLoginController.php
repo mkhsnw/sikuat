@@ -10,20 +10,25 @@ class AdminLoginController extends Controller
 {
     public function showLoginForm()
     {
+        // Jika admin sudah login, arahkan ke dashboard
+        if (Auth::guard('admin')->check()) {
+            return redirect()->route('admin.dashboard');
+        }
+
         return view('Admin.admin-login');
-    }
+    }    
 
     public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
 
-        // Cek login dengan kolom username
-        if (Auth::guard('admin')->attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
+        if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->route('admin.dashboard')->with('success', 'Login berhasil');
         }
 
-        return back()->with('error', 'Username atau password salah');
+        return back()->withErrors(['error' => 'Username atau password salah']);
     }
+    
 
     public function logout()
     {
