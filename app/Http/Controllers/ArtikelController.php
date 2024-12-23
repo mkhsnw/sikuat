@@ -13,6 +13,7 @@ class ArtikelController extends Controller
         $artikel = Artikel::with('kategori_artikel', 'user')->latest()->get();
         return view('article', compact('artikel'));
     }
+    
 
     public function create()
     {

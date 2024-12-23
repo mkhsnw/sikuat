@@ -29,7 +29,7 @@
       <div class="flex flex-col items-center space-y-4">
         <div class="relative w-40 h-40">
           <img 
-            src="{{ $users->foto ? asset($users->foto) : 'https://via.placeholder.com/150' }}" 
+            src="" 
             alt="Profile Picture" 
             class="w-full h-full rounded-full object-cover shadow-lg"
           />
