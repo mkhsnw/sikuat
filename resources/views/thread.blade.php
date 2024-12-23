@@ -58,7 +58,7 @@
                   
                 @foreach ($threads as $thread) 
                     <!-- Thread Post 1 -->
-                  <div class="p-6 border-b hover:bg-gray-50 transition-colors">
+                  <div class="p-6 border-b hover:bg-gray-50 transition-colors" onclick="window.location.href={{ route('detail_thread', $thread->id) }}">
                     <div class="flex items-start space-x-4">
                         <img src="https://via.placeholder.com/50" alt="Profile" class="w-12 h-12 rounded-full ring-2 ring-brand-blue/20">
                         <div class="flex-1">
@@ -97,33 +97,7 @@
                   
 
       <!-- Right Sidebar: Suggested Accounts -->
-      <div class="hidden lg:block lg:col-span-1">
-        <div class="bg-white rounded-2xl shadow-lg p-6">
-          <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Suggested Accounts</h2>
-          <div class="space-y-4">
-            <div class="flex items-center space-x-4">
-              <img src="https://via.placeholder.com/50" alt="Profile" class="w-12 h-12 rounded-full ring-2 ring-brand-blue/20">
-              <div class="flex-1">
-                <h3 class="font-semibold text-gray-900">Tech Innovator</h3>
-                <p class="text-gray-500 text-sm">@techinnovator</p>
-              </div>
-              <button class="bg-brand-blue text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600 transition-colors">
-                Follow
-              </button>
-            </div>
-            <div class="flex items-center space-x-4">
-              <img src="https://via.placeholder.com/50" alt="Profile" class="w-12 h-12 rounded-full ring-2 ring-brand-blue/20">
-              <div class="flex-1">
-                <h3 class="font-semibold text-gray-900">Digital Strategist</h3>
-                <p class="text-gray-500 text-sm">@digitalstrat</p>
-              </div>
-              <button class="bg-brand-blue text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600 transition-colors">
-                Follow
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
     </div>
   </div>

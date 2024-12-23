@@ -117,8 +117,25 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach ($mythreads as $thread) 
+                <div class="bg-green-50 p-4 rounded-xl">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-green-600 text-sm">{{ $thread->caption }}</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500">{{ $thread->like }} Komentar</span>
+                        <button onclick="window.location.href='{{ route('detail_thread', $thread->id) }}'" class="text-blue-600 hover:text-blue-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                @endforeach
                 <!-- Example Thread Card -->
-                <div class="bg-green-50 p-4 rounded-xl">
+               
+
+                {{-- <div class="bg-green-50 p-4 rounded-xl">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="font-bold text-green-800">Python Enthusiasts</h3>
                         <span class="text-green-600 text-sm">Active</span>
@@ -196,28 +213,12 @@
                             </svg>
                         </button>
                     </div>
-                </div>
-
-                <div class="bg-green-50 p-4 rounded-xl">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-bold text-green-800">Python Enthusiasts</h3>
-                        <span class="text-green-600 text-sm">Active</span>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-2">Discussions about advanced Python techniques</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-gray-500">12 Members</span>
-                        <button class="text-blue-600 hover:text-blue-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+                </div> --}}
                 <!-- Add more threads dynamically here -->
             </div>
         </div>
-
-        <!-- My Articles Section -->
+        @if ($users->poin >= 1000)
+            <!-- My Articles Section -->
         <div class="mt-10 bg-white rounded-2xl shadow-xl p-6">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold text-gray-800">My Articles</h2>
@@ -281,6 +282,8 @@
                 <!-- Add more articles dynamically here -->
             </div>
         </div>
+        @endif
+        
     </div>
     <x-footer></x-footer>
 

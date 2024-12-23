@@ -19,6 +19,7 @@ class User extends Authenticatable
         'password',
         'tanggal_lahir',
         'token', 
+        'poin',
         'foto',
     ];
 
@@ -34,5 +35,10 @@ class User extends Authenticatable
     public function threads()
     {
         return $this->hasMany(Thread::class, 'id_user');
+    }
+
+    public function artikel()
+    {
+        return $this->hasMany(Artikel::class, 'id_user');
     }
 }

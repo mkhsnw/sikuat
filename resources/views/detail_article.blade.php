@@ -4,11 +4,11 @@
   <article class="bg-white shadow-lg rounded-xl overflow-hidden">
       <!-- Featured Image -->
       <div class="relative h-96 md:h-[500px] w-full">
-          <img 
-              src="https://images.unsplash.com/photo-1526378722484-bd91ca387662?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
-              alt="AI Technology Landscape"
-              class="absolute inset-0 w-full h-full object-cover"
-          >
+        <img 
+        src="{{ asset('storage/' . $artikel->thumbnail) }}"
+        alt="Article Featured Image"
+        class="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-300"
+    />
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
       </div>
 
@@ -17,10 +17,10 @@
           <!-- Category and Title -->
           <div class="mb-6">
               <span class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs uppercase tracking-wide mb-4">
-                  Technology
+                  {{ $artikel->kategori_artikel->nama_kategori }}
               </span>
               <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-                  The Future of Artificial Intelligence
+                 {{ $artikel->judul }}
               </h1>
           </div>
 
@@ -32,45 +32,25 @@
                   class="w-12 h-12 rounded-full object-cover"
               >
               <div>
-                  <p class="font-semibold text-gray-800">Leroy Jenkins</p>
-                  <p class="text-sm text-gray-600">Senior Tech Journalist</p>
+                  <p class="font-semibold text-gray-800">{{ $artikel->user->nama_user }}</p>
+                  @if($artikel->user->poin < 500)
+                  <p class="text-sm text-gray-600">Bronze Member</p>
+                  @elseif($artikel->user->poin >= 500 && $artikel->user->poin < 1000)
+                  <p class="text-sm text-gray-600">Silver Member</p>
+                  @else
+                  <p class="text-sm text-gray-600"></p>
+                  @endif
+                 
               </div>
               <div class="ml-auto text-sm text-gray-500">
-                  3 min read
+                  {{ $artikel->created_at->diffForHumans() }}
               </div>
           </div>
 
           <!-- Article Body -->
           <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
               <p>
-                  Artificial Intelligence is no longer a distant dream but a present reality transforming industries, challenging our understanding of intelligence, and creating unprecedented opportunities across global sectors.
-              </p>
-
-              <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-                  The Current AI Landscape
-              </h2>
-
-              <p>
-                  From machine learning algorithms predicting consumer behavior to neural networks diagnosing complex medical conditions, AI has become an integral part of our technological ecosystem. The rapid advancement of AI technologies is reshaping how we work, communicate, and solve complex problems.
-              </p>
-
-              <blockquote class="border-l-4 border-blue-600 pl-4 italic text-gray-600 my-6">
-                  "AI is not just a technology, it's a fundamental shift in how we understand intelligence and problem-solving." - Tech Innovation Journal
-              </blockquote>
-
-              <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-                  Key Areas of Impact
-              </h2>
-
-              <ul class="list-disc list-inside space-y-3 text-gray-700">
-                  <li>Healthcare: Enhanced diagnostic capabilities</li>
-                  <li>Finance: Advanced predictive analytics</li>
-                  <li>Transportation: Autonomous vehicle development</li>
-                  <li>Creative Industries: Generative AI tools</li>
-              </ul>
-
-              <p>
-                  As we continue to explore the potential of AI, ethical considerations remain paramount. The technology's power demands responsible development, ensuring that advancements benefit humanity while mitigating potential risks.
+                 {{ $artikel->isi }}
               </p>
           </div>
 
