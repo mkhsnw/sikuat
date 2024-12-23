@@ -22,6 +22,12 @@ class ThreadController extends Controller
         return view('thread', compact('threads'));
     }
 
+    public function showdetail(Thread $thread)
+    {
+        
+        return view('detail_thread', compact('thread'));
+    }
+
     public function showaddThread()
     {
         // $iduser = session('id_user');

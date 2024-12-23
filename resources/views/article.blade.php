@@ -26,10 +26,10 @@
                                                 </h2>
 
                                                 <p class="text-brand-muted leading-relaxed mb-6">
-                                                               {{ $artikel->isi }}
+                                                               {{ Str::limit($artikel->isi) }}
                                                 </p>
 
-                                                <a href="" class="inline-flex items-center text-brand-accent font-semibold hover:underline group/link">
+                                                <a href="{{ route('detail_article', $artikel->id) }}" class="inline-flex items-center text-brand-accent font-semibold hover:underline group/link">
                                                                 <span>Read full article</span>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
