@@ -12,14 +12,20 @@ class ReviewArticleController extends Controller
     // Menampilkan daftar artikel untuk direview
     public function index()
     {
+        $allArticles = DB::table('artikel')
+            ->join('user', 'user.id', '=', 'artikel.id_user')
+            ->select('artikel.*', 'user.username', 'user.email')
+            ->orderBy('artikel.updated_at', 'desc')
+            ->get();
         // Mengambil artikel yang berstatus 'review' beserta kategori terkait
         $articles = DB::table('artikel')
             ->join('kategori_artikel', 'kategori_artikel.id', '=', 'artikel.id_kategori_artikel')
             ->where('artikel.status', 'review')
             ->select('artikel.*', 'kategori_artikel.nama_kategori')
+            ->orderBy('artikel.updated_at', 'asc')
             ->get();
 
-        return view('admin.admin_review_article', compact('articles'));
+        return view('admin.admin_review_article', compact('articles', 'allArticles'));
     }
     // Menampilkan detail artikel dalam format JSON
     public function show($id)

@@ -11,37 +11,73 @@
       <!-- Navbar -->
       <x-navbar></x-navbar>
 
-      <h2 class="text-xl font-bold mb-4">Review Artikel</h2>
+      <!-- Grid Layout -->
+      <div class="grid grid-cols-2 gap-6">
+        <!-- Kolom Kiri (Daftar Semua Artikel) -->
+        <div class="bg-white p-6 rounded-lg shadow h-full">
+          <h2 class="text-xl font-bold mb-4">Semua Artikel</h2>
+          <x-bladewind::table divider="thin">
+          <x-slot name="header">
+            <th>NO</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Judul Artikel</th>
+            <th>Tanggal Upload</th>
+            <th>Tanggal Update</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </x-slot>
 
-      <!-- Daftar Artikel -->
-      <div class="bg-white p-6 rounded-lg shadow flex flex-col h-full">
-        <div class="overflow-y-auto flex-1 max-h-[50rem]">
-          @foreach ($articles as $article)
-            <div class="bg-white p-6 rounded-lg shadow mb-4">
-              <!-- Artikel Header -->
-              <div class="flex items-center mb-4">
-                <div class="ml-4">
-                  <h2 class="text-lg font-bold">{{ $article->judul }}</h2>
-                  <p class="text-gray-500 text-sm">Kategori: {{ $article->nama_kategori }}</p>
+          @foreach ($allArticles as $index => $article)
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ $article->username }}</td>
+            <td>{{ $article->email }}</td>
+            <td>{{ $article->judul }}</td>
+            <td>{{ $article->created_at }}</td>
+            <td>{{ $article->updated_at }}</td>
+            <td>{{ $article->status }}</td>
+            <td>
+              <x-bladewind::button onclick="showArticleDetail({{ $article->id }})">
+                Lihat Detail
+              </x-bladewind::button>
+            </td>
+          </tr>
+          @endforeach
+        </x-bladewind::table>
+        </div>
+
+        <!-- Kolom Kanan (Daftar Regview Artikel) -->
+        <div class="bg-white p-6 rounded-lg shadow flex flex-col h-full">
+          <h2 class="text-xl font-bold mb-4">Artikel Perlu Direview</h2>
+          <div class="overflow-y-auto flex-1 max-h-[50rem]">
+            @foreach ($articles as $article)
+              <div class="bg-white p-6 rounded-lg shadow mb-4">
+                <!-- Artikel Header -->
+                <div class="flex items-center mb-4">
+                  <div class="ml-4">
+                    <h2 class="text-lg font-bold">{{ $article->judul }}</h2>
+                    <p class="text-gray-500 text-sm">Kategori: {{ $article->nama_kategori }}</p>
+                  </div>
+                </div>
+
+                <!-- Thumbnail -->
+                <div class="bg-gray-200 rounded-lg h-32 mb-4 flex items-center justify-center">
+                  <img src="{{ asset('storage/' . ($article->thumbnail ?? 'default-thumbnail.jpg')) }}" alt="Thumbnail" class="max-h-full object-cover">
+                </div>
+
+                <!-- Lihat Lebih Lengkap Button -->
+                <div class="flex justify-end">
+                  <button 
+                    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" 
+                    data-article="{{ json_encode($article) }}"
+                    onclick="showArticleDetail(this)">
+                    Review
+                  </button>
                 </div>
               </div>
-
-              <!-- Thumbnail -->
-              <div class="bg-gray-200 rounded-lg h-32 mb-4 flex items-center justify-center">
-                <img src="{{ asset('storage/' . ($article->thumbnail ?? 'default-thumbnail.jpg')) }}" alt="Thumbnail" class="max-h-full object-cover">
-              </div>
-
-              <!-- Lihat Lebih Lengkap Button -->
-              <div class="flex justify-end">
-                <button 
-                  class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" 
-                  data-article="{{ json_encode($article) }}"
-                  onclick="showArticleDetail(this)">
-                  Lihat Lebih Lengkap
-                </button>
-              </div>
-            </div>
-          @endforeach
+            @endforeach
+          </div>
         </div>
       </div>
     </main>
@@ -123,6 +159,6 @@
     function closeModal() {
         hideModal('article-detail-modal');
     }
-</script>
+  </script>
 </body>
 </html>
