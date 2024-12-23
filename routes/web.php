@@ -61,9 +61,9 @@ Route::post('/threads', [ThreadController::class, 'store'])->name('threads.store
 Route::get('/articles/create', [ArtikelController::class, 'create'])->name('articles.create');
 Route::post('/articles/store', [ArtikelController::class, 'store'])->name('articles.store');
 
-Route::get('/edit',function(){
-    return view('edit_profile');
-})->name('edit');
+// Route::get('/edit',function(){
+//     return view('edit_profile');
+// })->name('edit');
 
 Route::get('/profile/edit', [ProfileController::class, 'index'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
@@ -91,7 +91,7 @@ Route::get('/detail_thread' ,function(){
     return view('detail_thread');
 });
 
-Route::get('/detail_article' ,function(){
-    return view('detail_article');
+Route::get('/detail_article{id}' ,function(){
+    return view('detail_article')->name('detail_article');
 });
 

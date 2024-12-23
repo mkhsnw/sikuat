@@ -11,8 +11,14 @@
                         class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
                     >
                     <h2 class="text-2xl font-bold text-gray-800">{{ $users->username }}</h2>
-                    <p class="text-gray-500 mt-2">Software Developer</p>
-                    
+                    @if($users->poin < 500)
+                    <p class="text-gray-500 mt-2">Bronze Member</p>
+                    @elseif($users->poin >= 500 && $users->poin < 1000)
+                    <p class="text-gray-500 mt-2">Silver Member</p>
+                    @else
+                    <p class="text-gray-500 mt-2">Gold Member</p>
+                    @endif
+
                     <div class="mt-6 grid grid-cols-3 gap-4">
                         <div>
                             <span class="block text-2xl font-bold text-blue-600">24</span>
