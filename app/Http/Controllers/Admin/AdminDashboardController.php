@@ -13,6 +13,8 @@ class AdminDashboardController extends Controller
         $totalThreadsToday = DB::table('thread')->whereDate('created_at', now()->toDateString())->count();
         $articlesForReview = DB::table('artikel')->where('status', 'review')->count();
         $totalUsers = DB::table('user')->count();
-        return view('admin.admin', compact('totalChallenges', 'totalThreadsToday', 'articlesForReview', 'totalUsers'));
+        $totalUserClearanceToday = DB::table('daily_challenge')->whereDate('tanggal', now()->toDateString())->count();
+
+        return view('admin.admin', compact('totalChallenges', 'totalThreadsToday', 'articlesForReview', 'totalUsers', 'totalUserClearanceToday'));
     }
 }

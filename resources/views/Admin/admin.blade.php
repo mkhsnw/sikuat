@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<x-head></x-head>
+<x-head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</x-head>
 <body class="bg-gray-100">
   <div class="flex">
     <!-- Sidebar -->
@@ -30,6 +32,19 @@
             <p class="text-2xl font-bold">{{ $totalUsers }}</p>
           </div>
         </div>
+      </div>
+
+      <!-- Pie Chart -->
+      <div class="bg-white shadow p-6 rounded-lg flex justify-center items-center relative mt-6">
+        <div class="bg-white shadow p-6 rounded-lg">
+        <h3 class="text-gray-500">User Challenge Clearance Today</h3>
+        <x-bladewind::progress-circle
+          percentage="{{ number_format(($totalUserClearanceToday / $totalUsers) * 100,2) }}"
+          show_label="true"
+          show_percent="true"
+          size="big" 
+          color="green" />
+          </div>
       </div>
     </main>
   </div>
