@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminChallengeController;
 use App\Http\Controllers\Admin\ReviewArticleController;
 use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\AdminThreadController;
 
 // Route::get('/home', function () {
 //     return view('emails.dashboard')->name('home');
@@ -87,7 +88,9 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::put('/challenge/{id}', [AdminChallengeController::class, 'update'])->name('admin.challenge.update');
 
     // Route untuk Fitur Thread
-    Route::get('/admin-thread', [ThreadController::class, 'index'])->name('admin.thread.index');
+    Route::get('/admin-thread', [AdminThreadController::class, 'index'])->name('admin.thread.index');
+    Route::get('/admin-thread/{id}', [AdminThreadController::class, 'show'])->name('admin.thread.show');
+    Route::post('/admin-thread/{id}/delete', [AdminThreadController::class, 'destroy'])->name('admin.thread.destroy');
 
     // Review Articles
     Route::get('/review-article', [ReviewArticleController::class, 'index'])->name('admin.review.index');
