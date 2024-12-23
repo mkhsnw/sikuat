@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\AdminChallengeController;
 use App\Http\Controllers\Admin\ReviewArticleController;
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\AdminThreadController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Middleware\AdminAuthenticate;
 
 // Route::get('/home', function () {
 //     return view('emails.dashboard')->name('home');
@@ -75,11 +77,9 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->name('prof
 Route::get('admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
 
-Route::prefix('admin')->middleware('auth:admin')->group(function () {
+Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () {
     // Dashboard Admin
-    Route::get('/', function () {
-        return view('admin.admin');
-    })->name('admin.dashboard');
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     // Route untuk Fitur Challenge
     Route::get('/challenge', [AdminChallengeController::class, 'index'])->name('admin.challenge.index');
@@ -100,12 +100,8 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::post('/review-article/{id}/reject', [ReviewArticleController::class, 'reject'])->name('admin.review.reject');
     Route::post('/review-article/{id}/delete', [ReviewArticleController::class, 'destroy'])->name('admin.review.destroy');
 
-    //Route untuk Fitur Admin Article
-    Route::get('/article', [AdminArticleController::class, 'index'])->name('admin.article.index');
-    Route::get('/article/detail', [AdminArticleController::class, 'show'])->name('admin.article.show');
-
     // Logout Admin
-    Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 });
 
 Route::get('/detail_thread', function () {
