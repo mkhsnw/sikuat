@@ -12,43 +12,61 @@
       <x-navbar></x-navbar>
 
       <!-- Grid Layout -->
-      <div class="grid grid-cols-2 gap-6">
+      <div class="grid" style="grid-template-columns: 7fr 3fr; grid-template-rows: 1fr; gap: 1rem;">
         <!-- Kolom Kiri (Daftar Semua Artikel) -->
-        <div class="bg-white p-6 rounded-lg shadow h-full">
+        <div class="bg-white p-6 rounded-lg shadow overflow-y-auto">
           <h2 class="text-xl font-bold mb-4">Semua Artikel</h2>
           <x-bladewind::table divider="thin">
-          <x-slot name="header">
-            <th>NO</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Judul Artikel</th>
-            <th>Tanggal Upload</th>
-            <th>Tanggal Update</th>
-            <th>Status</th>
-            <th>Aksi</th>
-          </x-slot>
+            <x-slot name="header">
+              <th>NO</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Judul Artikel</th>
+              <th>Tanggal Upload</th>
+              <th>Tanggal Update</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </x-slot>
 
-          @foreach ($allArticles as $index => $article)
-          <tr>
-            <td>{{ $index + 1 }}</td>
-            <td>{{ $article->username }}</td>
-            <td>{{ $article->email }}</td>
-            <td>{{ $article->judul }}</td>
-            <td>{{ $article->created_at }}</td>
-            <td>{{ $article->updated_at }}</td>
-            <td>{{ $article->status }}</td>
-            <td>
-              <x-bladewind::button onclick="showArticleDetail({{ $article->id }})">
-                Lihat Detail
-              </x-bladewind::button>
-            </td>
-          </tr>
-          @endforeach
-        </x-bladewind::table>
+            @foreach ($allArticles as $index => $article)
+              <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $article->username }}</td>
+                <td>{{ $article->email }}</td>
+                <td>{{ $article->judul }}</td>
+                <td>{{ $article->created_at }}</td>
+                <td>{{ $article->updated_at }}</td>
+                <td>
+                  <span class="font-semibold
+                    @if($article->status == 'published') text-green-500
+                    @elseif($article->status == 'review') text-blue-500
+                    @elseif($article->status == 'rejected') text-red-500
+                    @endif
+                  ">
+                    {{ ucfirst($article->status) }}
+                  </span>
+                </td>
+                <td>
+                  <x-bladewind::button 
+                    size="small" 
+                    color="blue" 
+                    onclick="window.location.href='{{ route('admin.review.detail', $article->id) }}'">
+                    Detail
+                  </x-bladewind::button>
+                  <x-bladewind::button 
+                    size="small" 
+                    color="red" 
+                    onclick="window.location.href='{{ route('admin.review.destroy', $article->id) }}'">
+                    Delete
+                  </x-bladewind::button>
+                </td>
+              </tr>
+              @endforeach
+          </x-bladewind::table>
         </div>
 
         <!-- Kolom Kanan (Daftar Regview Artikel) -->
-        <div class="bg-white p-6 rounded-lg shadow flex flex-col h-full">
+        <div class="bg-white p-6 rounded-lg shadow overflow-y-auto">
           <h2 class="text-xl font-bold mb-4">Artikel Perlu Direview</h2>
           <div class="overflow-y-auto flex-1 max-h-[50rem]">
             @foreach ($articles as $article)

@@ -37,19 +37,13 @@ class ReviewArticleController extends Controller
             ->select('artikel.*', 'kategori_artikel.nama_kategori')
             ->first(); // Menggunakan first() karena hanya satu artikel yang diambil berdasarkan ID
 
-            // Debug: Melihat artikel yang diambil berdasarkan ID
-        Log::info('Artikel yang ditampilkan: ', (array) $artikel); // Log ke file log
-
-        // Debug: Gunakan dd() untuk melihat data artikel
-        dd($artikel); // Memastikan artikel ditemukan
-
         // Jika artikel tidak ditemukan, redirect kembali ke daftar artikel
-        if (!$article) {
+        if (!$artikel) {
             return redirect()->route('admin.review.index')->with('error', 'Artikel tidak ditemukan.');
         }
 
         // Mengembalikan view dengan artikel yang ditemukan
-        return view('admin.article_detail', compact('article'));
+        return view('detail_article', compact('artikel'));
     }
     
     public function accept($id)
@@ -72,5 +66,15 @@ class ReviewArticleController extends Controller
 
         // Redirect kembali ke daftar artikel dengan pesan sukses
         return redirect()->route('admin.review.index')->with('success', 'Artikel berhasil ditolak.');
+    }
+    // Menghapus artikel dari database
+    public function destroy($id)
+    {
+        // Menghapus artikel berdasarkan ID
+        $article = AdminArticle::find($id);
+        $article->delete();
+
+        // Redirect kembali ke daftar artikel dengan pesan sukses
+        return redirect()->route('admin.review.index')->with('success', 'Artikel berhasil dihapus.');
     }
 }
