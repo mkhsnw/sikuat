@@ -52,6 +52,7 @@ class LoginController extends Controller
 
     public function verifyToken(Request $request)
 {
+    
     // Validasi input email dan token
     $request->validate([
         'email' => 'required|email',

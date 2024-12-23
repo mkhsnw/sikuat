@@ -26,7 +26,7 @@ Route::get('/article', [ArtikelController::class, 'index'])->name('article');
 
 
 
-Route::get('/thread', function () {
+Route::get('/thread', function() {
     return view('thread');
 });
 
@@ -58,17 +58,25 @@ Route::get('/thread', [ThreadController::class, 'index']);
 // });
 Route::get('/threads/create', [ThreadController::class, 'showaddThread'])->name('threads.create');
 Route::post('/threads', [ThreadController::class, 'store'])->name('threads.store');
+Route::get('/threads/detail/{thread}', [ThreadController::class, 'showdetail'])->name('detail_thread');
 
+// Route::get('/detail_thread' ,function(){
+//     return view('detail_thread');
+// });
 
 // Route::get('/article/create',function(){
 //     return view('add_article');
 // })->name('article.create');
 Route::get('/articles/create', [ArtikelController::class, 'create'])->name('articles.create');
 Route::post('/articles/store', [ArtikelController::class, 'store'])->name('articles.store');
+// Route::get('/detail_article/{id}' ,function(){
+//     return view('detail_article')->name('detail_article');
+// });
+Route::get('/articles/detail/{artikel}', [ArtikelController::class, 'showdetail'])->name('detail_article');
 
-Route::get('/edit', function () {
-    return view('edit_profile');
-})->name('edit');
+// Route::get('/edit',function(){
+//     return view('edit_profile');
+// })->name('edit');
 
 Route::get('/profile/edit', [ProfileController::class, 'index'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
@@ -101,12 +109,4 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
 
     // Logout Admin
     Route::get('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
-});
-
-Route::get('/detail_thread', function () {
-    return view('detail_thread');
-});
-
-Route::get('/detail_article', function () {
-    return view('detail_article');
 });

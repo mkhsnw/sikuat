@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Artikel;
 use Illuminate\Http\Request;
 use App\Models\KategoriArtikel;
@@ -13,6 +14,17 @@ class ArtikelController extends Controller
         $artikel = Artikel::with('kategori_artikel', 'user')->latest()->get();
         return view('article', compact('artikel'));
     }
+
+    public function showdetail(Artikel $artikel)
+    {
+        
+        $user = session('id_user');
+        $users = User::find($user);
+        // dd($artikel);
+        // dd($users->all());
+        return view('detail_article', compact('artikel',  'users'));
+    }
+    
 
     public function create()
     {

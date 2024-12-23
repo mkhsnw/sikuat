@@ -31,15 +31,15 @@
                         required
                     ></textarea> --}}
                     <div class="flex-1 w-full">
-                        <x-bladewind::textarea label="Caption" rows="5" name="caption" required />
+                        <x-bladewind::textarea label="caption" rows="5" name="caption" required />
                     </div>
                 </div>
 
-            {{-- <!-- Thumbnail -->
+            <!-- Thumbnail -->
             <div class="mb-6">
                 <label for="thumbnail" class="block text-sm font-medium text-gray-700 mb-2">Foto</label>
                 <x-bladewind::filepicker name="thumbnail" placeholder="Upload File Bosku"/>
-            </div> --}}
+            </div>
                 {{-- <!-- Category -->
                 <div class="mb-6">
                     <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Category</label>

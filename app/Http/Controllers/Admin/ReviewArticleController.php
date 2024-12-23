@@ -30,11 +30,12 @@ class ReviewArticleController extends Controller
     // Menampilkan detail artikel dalam format JSON
     public function show($id)
     {
-        // Mengambil artikel berdasarkan ID dan menggabungkan dengan kategori terkait
+        // Mengambil artikel berdasarkan ID dan menggabungkan dengan kategori terkait dan user
         $artikel = DB::table('artikel')
             ->join('kategori_artikel', 'artikel.id_kategori_artikel', '=', 'kategori_artikel.id')
+            ->join('user', 'artikel.id_user', '=', 'user.id')
             ->where('artikel.id', $id)
-            ->select('artikel.*', 'kategori_artikel.nama_kategori')
+            ->select('artikel.*', 'kategori_artikel.nama_kategori', 'user.nama_user', 'user.poin')
             ->first(); // Menggunakan first() karena hanya satu artikel yang diambil berdasarkan ID
 
         // Jika artikel tidak ditemukan, redirect kembali ke daftar artikel
@@ -43,7 +44,7 @@ class ReviewArticleController extends Controller
         }
 
         // Mengembalikan view dengan artikel yang ditemukan
-        return view('detail_article', compact('artikel'));
+        return view('admin.admin_detail_artikel', compact('artikel'));
     }
     
     public function accept($id)

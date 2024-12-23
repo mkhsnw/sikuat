@@ -5,14 +5,11 @@
 			<article class="bg-white shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl group grid md:grid-cols-2 my-8">
                                 <!-- Article Image -->
                                 <div class="relative md:h-full">
-                                                <img 
-                                                                {{-- src="https://images.unsplash.com/photo-1526378722484-bd91ca387662?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
-                                                                alt="Article Featured Image" 
-                                                                class="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-300" --}}
-                                                                src="{{ $artikel->thumbnail }}"
-                                                                alt="Article Featured Image"
-                                                                class="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-300"
-                                                >
+                                    <img 
+                                    src="{{ asset('storage/' . $artikel->thumbnail) }}"
+                                    alt="Article Featured Image"
+                                    class="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-300"
+                                />
                                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                 </div>
 
@@ -29,10 +26,10 @@
                                                 </h2>
 
                                                 <p class="text-brand-muted leading-relaxed mb-6">
-                                                               {{ $artikel->isi }}
+                                                               {{ Str::limit($artikel->isi) }}
                                                 </p>
 
-                                                <a href="#" class="inline-flex items-center text-brand-accent font-semibold hover:underline group/link">
+                                                <a href="{{ route('detail_article', $artikel->id) }}" class="inline-flex items-center text-brand-accent font-semibold hover:underline group/link">
                                                                 <span>Read full article</span>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
