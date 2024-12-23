@@ -94,9 +94,8 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
 
     // Review Articles
     Route::get('/review-article', [ReviewArticleController::class, 'index'])->name('admin.review.index');
-    Route::post('/review-article/{id}/revisi', [ReviewArticleController::class, 'revisi'])->name('admin.review.revisi');
     Route::post('/review-article/{id}/accept', [ReviewArticleController::class, 'accept'])->name('admin.review.accept');
-    Route::get('/review-article/{id}', [ReviewArticleController::class, 'show'])->name('admin.review.show');
+    Route::get('/review-article/{id}', [ReviewArticleController::class, 'show'])->name('admin.review.detail');
     Route::post('/review-article/{id}/reject', [ReviewArticleController::class, 'reject'])->name('admin.review.reject');
     Route::post('/review-article/{id}/delete', [ReviewArticleController::class, 'destroy'])->name('admin.review.destroy');
 
