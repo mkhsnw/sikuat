@@ -1,70 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<x-head></x-head>
-<body class="bg-gray-100">
-  <div class="flex min-h-screen">
-    <!-- Sidebar -->
-    <x-sidebar></x-sidebar>
-    
-    <!-- Main Content -->
-    <main class="flex-1 p-6">
-      <!-- Navbar -->
-      <x-navbar></x-navbar>
-
-      <!-- Grid Layout -->
-      <div class="grid grid-cols-2 gap-6">
-        <!-- Blog Section -->
-        <div class="bg-white p-6 rounded-lg shadow flex flex-col h-full">
-          <div class="overflow-y-auto flex-1 max-h-[50rem]">
-            <x-blog></x-blog>
-            <x-blog></x-blog>
-          </div>
-        </div>
-
-        <!-- Profile Section -->
-        <div class="bg-white p-6 rounded-lg shadow flex flex-col h-full">
-          <div class="bg-gray-200 rounded-lg shadow-lg p-4 flex-1 max-h-[50rem] overflow-y-auto">
-            <!-- Profile Section -->
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                <span class="text-sm font-semibold">Profile</span>
-              </div>
-              <div class="ml-4">
-                <h2 class="text-lg font-bold">Account One</h2>
-              </div>
-            </div>
-
-            <!-- Thumbnail -->
-            <div class="bg-white border border-gray-300 rounded-lg h-32 flex items-center justify-center mb-4">
-              <span class="font-bold text-gray-500">Thumbnail</span>
-            </div>
-
-            <!-- Text Content -->
-            <div class="text-gray-700 text-sm mb-4">
-              <p>
-                This is the first tweet in the thread. You can write longer text here
-                to simulate how tweets are presented. This is the first tweet in the
-                thread. You can write longer text here to simulate how tweets are
-                presented. This is the first tweet in the thread.
-              </p>
-              <p>
-                Add more content here to test scrolling. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
-              </p>
-            </div>
-
-            <!-- Buttons -->
-            <div class="flex justify-end space-x-4">
-              <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400">
-                Revisi
-              </button>
-              <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-                Accept
-              </button>
-            </div>
-          </div>
-        </div>
+<x-header></x-header>
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <!-- Article Header -->
+  <article class="bg-white shadow-lg rounded-xl overflow-hidden">
+      <!-- Featured Image -->
+      <div class="relative h-96 md:h-[500px] w-full">
+          <img 
+              src="{{ asset('storage/' . ($artikel->thumbnail ?? 'default-thumbnail.jpg')) }}" 
+              alt="{{ $artikel->judul }}"
+              class="absolute inset-0 w-full h-full object-cover"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
       </div>
-    </main>
-  </div>
-</body>
-</html>
+
+      <!-- Article Content -->
+      <div class="p-6 md:p-12">
+          <!-- Category and Title -->
+          <div class="mb-6">
+              <span class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs uppercase tracking-wide mb-4">
+                  {{ $artikel->nama_kategori }}
+              </span>
+              <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                  {{ $artikel->judul }}
+              </h1>
+          </div>
+
+          <!-- Author and Read Time -->
+          <div class="flex items-center space-x-4 mb-6 pb-6 border-b border-gray-200">
+              <img 
+                  src="https://via.placeholder.com/48" 
+                  alt="Author Profile"
+                  class="w-12 h-12 rounded-full object-cover"
+              >
+              <div>
+                  <p class="font-semibold text-gray-800">{{ $artikel->author_name ?? 'Author Name' }}</p>
+                  <p class="text-sm text-gray-600">{{ $artikel->author_title ?? 'Author Title' }}</p>
+              </div>
+              <div class="ml-auto text-sm text-gray-500">
+                  {{ $artikel->read_time ?? 'Read Time' }}
+              </div>
+          </div>
+
+          <!-- Article Body -->
+          <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+              {!! nl2br(e($artikel->isi)) !!}
+          </div>
+      </div>
+  </article>
+</div>

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('isi');
             $table->integer('like');
             $table->string('thumbnail')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

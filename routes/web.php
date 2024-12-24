@@ -9,6 +9,11 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminChallengeController;
+use App\Http\Controllers\Admin\ReviewArticleController;
+use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\AdminThreadController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Middleware\AdminAuthenticate;
 
 // Route::get('/home', function () {
 //     return view('emails.dashboard')->name('home');
@@ -76,26 +81,32 @@ Route::get('/articles/detail/{artikel}', [ArtikelController::class, 'showdetail'
 Route::get('/profile/edit', [ProfileController::class, 'index'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
+// Route untuk halaman login admin
+Route::get('admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
 
-Route::prefix('admin')->middleware('auth:admin')->group(function () {
+Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () {
     // Dashboard Admin
-    Route::get('/', function () {
-        return view('admin.admin');
-    })->name('admin.dashboard');
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     // Route untuk Fitur Challenge
     Route::get('/challenge', [AdminChallengeController::class, 'index'])->name('admin.challenge.index');
     Route::post('/challenge', [AdminChallengeController::class, 'store'])->name('admin.challenge.store');
-    Route::put('/challenge/{id}', [AdminChallengeController::class, 'update'])->name('admin.challenge.update');
     Route::delete('/challenge/{id}', [AdminChallengeController::class, 'destroy'])->name('admin.challenge.destroy');
+    Route::put('/challenge/{id}', [AdminChallengeController::class, 'update'])->name('admin.challenge.update');
+
+    // Route untuk Fitur Thread
+    Route::get('/admin-thread', [AdminThreadController::class, 'index'])->name('admin.thread.index');
+    Route::get('/admin-thread/{id}', [AdminThreadController::class, 'show'])->name('admin.thread.show');
+    Route::post('/admin-thread/{id}/delete', [AdminThreadController::class, 'destroy'])->name('admin.thread.destroy');
+
+    // Review Articles
+    Route::get('/review-article', [ReviewArticleController::class, 'index'])->name('admin.review.index');
+    Route::post('/review-article/{id}/accept', [ReviewArticleController::class, 'accept'])->name('admin.review.accept');
+    Route::get('/review-article/{id}', [ReviewArticleController::class, 'show'])->name('admin.review.detail');
+    Route::post('/review-article/{id}/reject', [ReviewArticleController::class, 'reject'])->name('admin.review.reject');
+    Route::post('/review-article/{id}/delete', [ReviewArticleController::class, 'destroy'])->name('admin.review.destroy');
 
     // Logout Admin
-    Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 });
-
-
-
-
-
