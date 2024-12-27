@@ -24,5 +24,10 @@ class Thread extends Model
 
     }
 
+    public function komentar()
+    {
+        return $this->hasMany(Komentar::class, 'id_thread');
+    }
+
     
 }

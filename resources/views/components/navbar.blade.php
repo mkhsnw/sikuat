@@ -13,8 +13,13 @@
     <x-slot:trigger>
         <div class="flex space-x-2 items-center rounded-md">
             <div class="grow">
-                <x-bladewind::avatar image="/assets/...jpg" size="medium" />
-            </div>
+                <img 
+                src="{{ $users->foto ? asset($users->foto) : asset('uploads/profile_pictures/default.png') }}" 
+                alt="Profile" 
+                class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
+             />
+             
+                        </div>
             <div>
                 <x-bladewind::icon name="chevron-down" class="!h-4 !w-4" />
             </div>

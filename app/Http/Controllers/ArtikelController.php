@@ -11,8 +11,10 @@ class ArtikelController extends Controller
 {
     public function index()
     {
+        $user = session('id_user');
+        $users = User::find($user);
         $artikel = Artikel::with('kategori_artikel', 'user')->latest()->get();
-        return view('article', compact('artikel'));
+        return view('article', compact('artikel', 'users'));
     }
 
     public function showdetail(Artikel $artikel)
