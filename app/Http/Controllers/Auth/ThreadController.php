@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Thread;
+use App\Models\Komentar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -24,8 +25,14 @@ class ThreadController extends Controller
 
     public function showdetail(Thread $thread)
     {
+    
+        $komentars = Komentar::with('user')->where('id_thread', $thread->id)->latest()->get();
+        $user = session('id_user');
+        $users = User::find($user);
         
-        return view('detail_thread', compact('thread'));
+        // dd($users->all());
+    //    dd($thread);
+        return view('detail_thread', compact('thread',  'users', 'komentars'));
     }
 
     public function showaddThread()
@@ -76,7 +83,24 @@ class ThreadController extends Controller
      * Show the form for creating a new resource.
      */
  
+ public function komentar(Request $request, Thread $thread)
+ {
+  
 
+     $iduser = session('id_user'); // Pastikan session id_user diatur dengan benar
+     $validated = $request->validate([
+         'komentar' => 'required|string',
+     ]);
+
+   
+     $komentar = new Komentar();
+     $komentar->id_user = $iduser; // Pastikan user sudah login
+     $komentar->id_thread = $thread->id;
+     $komentar->komentar = $validated['komentar'];
+     $komentar->save();
+ 
+     return redirect()->back()->with('success', 'Komentar berhasil ditambahkan!');
+ }
     /**
      * Store a newly created resource in storage.
      */

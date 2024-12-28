@@ -23,4 +23,11 @@ class Thread extends Model
         return $this->belongsTo(User::class, 'id_user');
 
     }
+
+    public function komentar()
+    {
+        return $this->hasMany(Komentar::class, 'id_thread');
+    }
+
 }
+

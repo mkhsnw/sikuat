@@ -1,4 +1,4 @@
-<x-header></x-header>
+<x-header :users="$users" />
 <body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex flex-col">
     <div class="container mx-auto px-4 py-8 flex-grow">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -6,10 +6,11 @@
             <div class="lg:col-span-1 bg-white rounded-2xl shadow-xl p-6">
                 <div class="text-center">
                     <img 
-                        src="/api/placeholder/200/200" 
-                        alt="Profile" 
-                        class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
-                    >
+                    src="{{ $users->foto ? asset($users->foto) : asset('uploads/profile_pictures/default.png') }}" 
+                    alt="Profile" 
+                    class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
+                />
+                    
                     <h2 class="text-2xl font-bold text-gray-800">{{ $users->username }}</h2>
                     @if($users->poin < 500)
                     <p class="text-gray-500 mt-2">Bronze Member</p>
@@ -123,7 +124,7 @@
                         <span class="text-green-600 text-sm">{{ $thread->caption }}</span>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-sm text-gray-500">{{ $thread->like }} Komentar</span>
+                        <span class="text-sm text-gray-500">{{ $thread->komentar->count() }} Komentar</span>
                         <button onclick="window.location.href='{{ route('detail_thread', $thread->id) }}'" class="text-blue-600 hover:text-blue-800">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
