@@ -29,5 +29,5 @@ class Thread extends Model
         return $this->hasMany(Komentar::class, 'id_thread');
     }
 
-    
 }
+

@@ -58,5 +58,4 @@ class ProfileController extends Controller
         // Redirect ke halaman edit profil dengan pesan sukses
         return redirect()->route('profile.edit')->with('success', 'Profile updated successfully!');
     }
-    
 }
